@@ -27,6 +27,28 @@ public class Question5
      */
      
     Scanner in = new Scanner(System.in);
-    
+    int elem = in.nextInt();
+    int arr[] = new int[elem];
+    int mode = 1;
+
+    for (int i=0; i < elem; ++i) {
+      arr[i] = in.nextInt();
+    }
+
+    for (int i=0; i < elem; ++i) {
+      if (arr[i] == '\0') i++;  // dont count for those alr accounted
+      int occur = 1;
+      for (int j=i+1; j < elem; ++j) {
+        if (arr[i] == arr[j]) {
+          occur++;      
+          arr[j] = '\0';        // set accounted for to null
+        }
+      }
+      if (occur > mode) mode = arr[i];
+    }
+
+    System.out.println(mode);
+
+    in.close();
   }
 }
